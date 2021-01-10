@@ -1,24 +1,27 @@
 import React from 'react'
 import styled from 'styled-components';
-import {navigate} from "../../../lib/History";
+import Start from "./Start";
+import Center from "./Center";
+import End from "./End";
 
 const Header = () => {
 
     return (
         <Container>
-            <NavItem onClick={() => navigate('/')}>home</NavItem>
-            <NavItem onClick={() => navigate('/signin')}>signin</NavItem>
-            <NavItem onClick={() => navigate('/signup')}>signup</NavItem>
+            <Start/>
+            <Center/>
+            <End/>
         </Container>
     )
 }
 
-const Container = styled.div`
+const Container = styled.header`
     display:flex;
-`;
-
-const NavItem = styled.div`
-    padding: 20px 30px;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    background: #212121;
+    padding: 0 18px;  
 `;
 
 export default Header;

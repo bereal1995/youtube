@@ -27,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
         line-height: 1;
+        background: #181818;
     }
     ol, ul {
         list-style: none;
@@ -52,6 +53,10 @@ export const GlobalStyle = createGlobalStyle`
     img {
         vertical-align:top;
         max-width: 100%;
+    }
+    svg.youtube-icon {
+      pointer-events: none; 
+      display: block;
     }
 `;
 

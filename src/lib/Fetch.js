@@ -33,9 +33,7 @@ const axiosInstance = axios.create({
     withCredentials: false,
 });
 
-const request = async (contentType, method, url,  data = {}, {success, beforeSend, complete, error, timeout} ) => {
-
-    beforeSend && beforeSend();
+const request = async (contentType, method, url,  data = {}) => {
 
     try {
         const config = {
@@ -53,14 +51,9 @@ const request = async (contentType, method, url,  data = {}, {success, beforeSen
                 config.data = data;
         }
 
-        if (timeout)
-            config.timeout = timeout;
-
         console.log('@@[Request Config]',config);
 
         const result = await axiosInstance(config);
-
-        success && success(result.data);
 
         return result.data;
     } catch (e) {
@@ -68,13 +61,12 @@ const request = async (contentType, method, url,  data = {}, {success, beforeSen
             if (e.response.status === 401) {
                 console.log('로그인 만료됨. 로그인으로 이동합니다');
             } else {
-                error && error(e.response.data);
+                console.log('@@e',e);
             }
         } else {
-            error && error(e);
+            console.log('@@e',e);
         }
     } finally {
-        complete && complete();
     }
 
 }

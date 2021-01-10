@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components';
+import MainListContainer from "../../Containers/VideoListContainer/MainListContainer";
 
 const Home = () => {
-    
+
     return (
         <Container>
-            Home
+            <MainListContainer/>
         </Container>
     )
 }

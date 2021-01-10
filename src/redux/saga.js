@@ -1,11 +1,15 @@
-import {all} from 'redux-saga/effects'
+import {all, fork} from 'redux-saga/effects'
 import appSaga from './app/saga';
 import authSaga from './auth/saga';
+import videoSaga from './video/saga';
+import searchSaga from './search/saga';
 
 function* sagas() {
     yield all([
-        appSaga(),
-        authSaga(),
+        fork(appSaga),
+        fork(authSaga),
+        fork(videoSaga),
+        fork(searchSaga),
     ])
 }
 

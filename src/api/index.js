@@ -2,7 +2,8 @@ import {FetchJson} from "../lib/Fetch";
 
 
 const API = {
-    getTodo: (data) => FetchJson.get('/todos', data),
+    getVideos: (data) => FetchJson.get('/videos', data),
+    searchVideos: (data) => FetchJson.get('/search', data),
 }
 
 export default API;

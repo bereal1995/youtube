@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from "styled-components";
+import {navigate} from "../../../lib/History";
+import {appActions} from "../../../redux/ActionCreators";
+import {useSelector} from "react-redux";
 
 function Start() {
 
+    const app = useSelector(state => state.app);
+
   return (
       <Container>
-          <ButtonMenu>
+          <ButtonMenu onClick={() => appActions.updateState({sidebar: !app.sidebar})}>
               <svg viewBox="0 0 24 24"
                    preserveAspectRatio="xMidYMid meet"
                    focusable="false"
@@ -15,7 +20,7 @@ function Start() {
                   </g>
               </svg>
           </ButtonMenu>
-          <Logo>
+          <Logo onClick={() => navigate('/')}>
               <div className="logo-svg">
                   <svg viewBox="0 0 200 60" preserveAspectRatio="xMidYMid meet" focusable="false"
                        className="youtube-icon">

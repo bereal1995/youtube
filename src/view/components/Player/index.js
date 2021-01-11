@@ -10,7 +10,7 @@ function Player({source}) {
   )
 }
 const Container = styled.div`
-
+  width: 100%;
 `;
 
 const EmbedContainer = styled.div`

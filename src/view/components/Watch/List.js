@@ -10,7 +10,7 @@ function List() {
   )
 }
 const Container = styled.div`
-
+  width: 402px;
 `;
 
 

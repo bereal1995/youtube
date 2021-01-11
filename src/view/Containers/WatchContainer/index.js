@@ -39,11 +39,12 @@ function WatchContainer({location}) {
   )
 }
 const Container = styled.div`
-
+  display:flex;
+  flex-wrap: wrap;
 `;
 
 const Left = styled.div`
-    
+  flex: 1;
 `;
 
 const Right = styled.div`

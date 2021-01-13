@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import moment from 'moment'
-import {thousandNumberFormat} from "../../../lib/Common";
+import {setViewCount, thousandNumberFormat} from "../../../lib/Common";
+import {Tags} from "../../../styled/Common.Styled";
+import ChannelDetail from "./ChannelDetail";
 
-function Info({snippet,statistics}) {
+export function Info({snippet,statistics}) {
 
     const {
         title,
@@ -20,27 +22,6 @@ function Info({snippet,statistics}) {
         favoriteCount,
         commentCount
     } = statistics;
-
-    const setViewCount = (count) => {
-        if (count / 10000 >= 1) {
-            return thousandNumberFormat(Math.floor(count / 10000) + '.' + Math.floor(count / 1000).toString().charAt(1) + '만');
-        } else {
-            return thousandNumberFormat(count)
-        }
-    }
-    
-    const descriptionChange = (v) => {
-        const result = v.split(/(\n|\r\n)/g);
-
-        return result.map((value) => {
-            if (value.substr(0,1) === '#') {
-                return value.split(' ').map((item) => `<span>${item}</span>`).join('')
-            }
-            else return value
-            console.log('@@value',value);
-        }).join('')
-    }
-    console.log('@@descriptionChange(description)',descriptionChange(description));
 
   return (
       <Container>
@@ -114,28 +95,10 @@ function Info({snippet,statistics}) {
                   </DotMenu>
               </Tools>
           </Head>
-          <ChannelDetail>
-              <ChannelDesk>
-                  <ChannelInfo>
-                      <Avatar></Avatar>
-                      <h3>
-                          {channelTitle}
-                          <span className="follower">구독자 {thousandNumberFormat(favoriteCount)}명</span>
-                      </h3>
-                  </ChannelInfo>
-                  <ChannelText>
-                      <p>
-                          {descriptionChange(description)}
-                      </p>
-                      <Tags>
-                          {
-
-                          }
-                      </Tags>
-                      <div className="control">간략히</div>
-                  </ChannelText>
-              </ChannelDesk>
-          </ChannelDetail>
+          <ChannelDetail channelTitle={channelTitle}
+                         favoriteCount={favoriteCount}
+                         description={description}
+          />
       </Container>
   )
 }
@@ -168,11 +131,6 @@ const Desc = styled.div`
         margin: 0 5px;
       }
     }
-`;
-
-const Tags = styled.div`
-  font-size: 12px;
-  color: #3EA6FF;
 `;
 
 const Tools = styled.div`
@@ -220,47 +178,5 @@ const Save = styled.div`
 const DotMenu = styled.div`
     
 `;
-
-const ChannelDetail = styled.div`
-  display:flex;
-  padding-top: 16px;
-`;
-
-const ChannelDesk = styled.div`
-  flex: 1;
-`;
-
-const Avatar = styled.div`
-  width: 48px;
-  height: 48px;
-  margin-right: 16px;
-  border-radius: 50%;
-  background: #fff;
-  overflow: hidden;
-`;
-
-const ChannelInfo = styled.div`
-  display:flex;
-  align-items: center;
-  height: 50px;
-  margin-bottom: 12px;
-  h3 {
-    font-size: 14px;
-    font-weight: 500;
-    .follower {
-        display:block;
-        font-size: 13px;
-        color: #aaa;
-    }
-  }
-`;
-
-const ChannelText = styled.div`
-    margin-left: 64px;
-    p {
-      white-space: pre-wrap;
-    }
-`;
-
 
 export default Info;

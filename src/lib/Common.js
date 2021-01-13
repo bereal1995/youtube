@@ -42,6 +42,14 @@ export const thousandNumberFormat = (n) => {
         return n.replace(THOUSAND_COMMA_REGEX, '$1,');
 }
 
+export const setViewCount = (count) => {
+    if (count / 10000 >= 1) {
+        return thousandNumberFormat(Math.floor(count / 10000) + '.' + Math.floor(count / 1000).toString().charAt(1) + '만');
+    } else {
+        return thousandNumberFormat(count)
+    }
+}
+
 export const invertObject = (obj) => {
     let result = {};
     Object.entries(obj).forEach(([k, v]) => {

@@ -29,6 +29,19 @@ function Info({snippet,statistics}) {
         }
     }
     
+    const descriptionChange = (v) => {
+        const result = v.split(/(\n|\r\n)/g);
+
+        return result.map((value) => {
+            if (value.substr(0,1) === '#') {
+                return value.split(' ').map((item) => `<span>${item}</span>`).join('')
+            }
+            else return value
+            console.log('@@value',value);
+        }).join('')
+    }
+    console.log('@@descriptionChange(description)',descriptionChange(description));
+
   return (
       <Container>
           <Head>
@@ -112,7 +125,7 @@ function Info({snippet,statistics}) {
                   </ChannelInfo>
                   <ChannelText>
                       <p>
-                          {description}
+                          {descriptionChange(description)}
                       </p>
                       <Tags>
                           {
@@ -244,6 +257,9 @@ const ChannelInfo = styled.div`
 
 const ChannelText = styled.div`
     margin-left: 64px;
+    p {
+      white-space: pre-wrap;
+    }
 `;
 
 

@@ -2,13 +2,16 @@ import React from 'react';
 import styled from "styled-components";
 import cn from 'classnames'
 import {withRouter} from "react-router-dom";
+import {navigate} from "../../../lib/History";
 
 function SideMenuSmall({location}) {
 
   return (
       <Container>
           <Nav>
-              <NavItem className={cn({isActive: location.pathname === '/'})}>
+              <NavItem className={cn({isActive: location.pathname === '/'})}
+                       onClick={() => navigate('/')}
+              >
                   <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
                        className="style-scope yt-icon youtube-icon">
                       <g className="style-scope yt-icon">
@@ -17,7 +20,9 @@ function SideMenuSmall({location}) {
                   </svg>
                   <span>홈</span>
               </NavItem>
-              <NavItem>
+              <NavItem className={cn({isActive: location.pathname === '/feed/best'})}
+                       onClick={() => navigate('/feed/best')}
+              >
                   <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
                        className="style-scope yt-icon youtube-icon">
                       <g className="style-scope yt-icon">
@@ -28,7 +33,9 @@ function SideMenuSmall({location}) {
                   </svg>
                   <span>인기</span>
               </NavItem>
-              <NavItem>
+              <NavItem className={cn({isActive: location.pathname === '/feed/subscriptions'})}
+                       onClick={() => navigate('/feed/subscriptions')}
+              >
                   <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
                        className="style-scope yt-icon youtube-icon">
                       <g className="style-scope yt-icon">
@@ -39,7 +46,9 @@ function SideMenuSmall({location}) {
                   </svg>
                   <span>구독</span>
               </NavItem>
-              <NavItem>
+              <NavItem className={cn({isActive: location.pathname === '/feed/library'})}
+                       onClick={() => navigate('/feed/library')}
+              >
                   <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
                        className="style-scope yt-icon youtube-icon">
                       <g className="style-scope yt-icon">
@@ -51,7 +60,9 @@ function SideMenuSmall({location}) {
                   </svg>
                   <span>보관함</span>
               </NavItem>
-              <NavItem>
+              <NavItem className={cn({isActive: location.pathname === '/feed/history'})}
+                       onClick={() => navigate('/feed/history')}
+              >
                   <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
                        className="style-scope yt-icon youtube-icon">
                       <g className="style-scope yt-icon">
@@ -80,6 +91,7 @@ const Nav = styled.div`
   display:flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 4px;
 `;
 
 const NavItem = styled.div`

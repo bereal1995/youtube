@@ -25,6 +25,9 @@ export const GlobalStyle = createGlobalStyle`
         footer, header, hgroup, menu, nav, section {
         display: block;
     }
+    html {
+        font-family: Roboto, Arial, sans-serif; 
+    }
     body {
         line-height: 1;
         background: #181818;

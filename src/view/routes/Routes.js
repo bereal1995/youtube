@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import SignIn from "../pages/Sign/SignIn";
 import SignUp from "../pages/Sign/SignUp";
 import Watch from "../pages/Watch";
+import Feed from "../pages/Feed";
 
 const Routes = ({sidebar}) => {
 
@@ -14,6 +15,7 @@ const Routes = ({sidebar}) => {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/watch" component={Watch}/>
+                <Route path="/feed" component={Feed}/>
                 <Route path="/signin" component={SignIn}/>
                 <Route path="/signup" component={SignUp}/>
                 <Route component={NotFound}/>

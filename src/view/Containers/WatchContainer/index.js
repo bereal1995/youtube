@@ -22,25 +22,35 @@ function WatchContainer({location}) {
             key: 'AIzaSyCyw5uVybeHQmT69RLSwGIRltYNDsodJxM',
             part: 'id, snippet, contentDetails, player, statistics',
             maxResults: 2,
-        })
+        });
     },[])
 
     if(!item) return null;
   return (
       <Container>
           <Player source={item?.player}/>
-          <Left>
-              <Info {...item}/>
-          </Left>
-          <Right>
-              <List/>
-          </Right>
+          <ContentsContainer>
+              <Left>
+                  <Info {...item}/>
+              </Left>
+              <Right>
+                  <List {...item}/>
+              </Right>
+          </ContentsContainer>
       </Container>
   )
 }
 const Container = styled.div`
   display:flex;
   flex-wrap: wrap;
+  flex-direction: column;
+`;
+
+const ContentsContainer = styled.div`
+  display:flex;
+  justify-content: center;
+  min-width: 1280px;
+  padding: 0 20px;
 `;
 
 const Left = styled.div`

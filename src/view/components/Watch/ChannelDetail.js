@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import {thousandNumberFormat} from "../../../lib/Common";
-import {Tags} from "../../../styled/Common.Styled";
 
 function ChannelDetail(props) {
     const {
@@ -9,6 +8,8 @@ function ChannelDetail(props) {
         favoriteCount,
         description
     } = props;
+
+    console.log('@@favoriteCount',favoriteCount);
 
     const [control, setControl] = useState(false);
 

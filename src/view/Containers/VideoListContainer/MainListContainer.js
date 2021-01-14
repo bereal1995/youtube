@@ -3,10 +3,12 @@ import styled from "styled-components";
 import VideoList from "../../components/Video/VideoList";
 import {videoActions} from "../../../redux/ActionCreators";
 import {useSelector} from "react-redux";
+import SideMenuSmall from "../../components/SideMenu/SideMenuSmall";
 
 function MainListContainer() {
 
     const {list} = useSelector(state => state.video);
+    const app = useSelector(state => state.app);
 
     const getVideos = () => videoActions.getVideos({
         key: 'AIzaSyCyw5uVybeHQmT69RLSwGIRltYNDsodJxM',
@@ -21,7 +23,10 @@ function MainListContainer() {
     },[])
 
   return (
-      <Container>
+      <Container sidebar={app.sidebar}>
+          {
+              !app.sidebar && <SideMenuSmall/>
+          }
           <VideoList
               {...list}
           />
@@ -29,7 +34,7 @@ function MainListContainer() {
   )
 }
 const Container = styled.div`
-
+  ${props => props.sidebar ? 'margin-left:0;' : 'margin-left:72px;'}
 `;
 
 

@@ -16,6 +16,13 @@ const saga = function* () {
                 watch: result
             }))
         }),
+        takeLatest(Action.Types.GET_ACTIVITIES_VIDEOS, function* ({data}) {
+            const result = yield call(API.activitiesVideos, data)
+            console.log('@@data',data);
+            yield put(Action.Creators.updateState({
+                activities: result,
+            }))
+        }),
     ])
 }
 

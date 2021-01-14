@@ -5,7 +5,6 @@ import Routes from "./routes/Routes";
 import Header from "./components/Header";
 import SideMenuBig from "./components/SideMenu/SideMenuBig";
 import {useSelector} from "react-redux";
-import SideMenuSmall from "./components/SideMenu/SideMenuSmall";
 
 const App = () => {
 
@@ -16,7 +15,7 @@ const App = () => {
             <GlobalStyle/>
             <Header/>
             {
-                app.sidebar ? <SideMenuBig/> : <SideMenuSmall/>
+                app.sidebar && <SideMenuBig/>
             }
             <Routes sidebar={app.sidebar}/>
         </Container>

@@ -55,9 +55,7 @@ function VideoItem({id,snippet, statistics}) {
                       <span className="dot"/>
                       <span>1주 전</span>
                   </p>
-                  <ButtonOptions>
-                      <IconSettings/>
-                  </ButtonOptions>
+                  <IconSettings/>
               </Detail>
           </Desc>
       </Container>
@@ -107,6 +105,10 @@ const Detail = styled.div`
         margin: 0 5px;
       }
     }
+    .icon{
+        right: 0;
+        top: 10px;
+    }
 `;
 
 const Avatar = styled.div`
@@ -114,23 +116,6 @@ const Avatar = styled.div`
         width: 36px;
         height: 36px;
         border-radius: 50%;
-    }
-`;
-
-const ButtonOptions = styled.div`
-    position: absolute;
-    right: 0;
-    top: 10px;
-    width: 24px;
-    height: 24px;
-    opacity: .6;
-    transition: .4s;
-    cursor: pointer;
-    &:hover {
-      opacity: 1;
-    }
-    svg {
-      fill: #fff;
     }
 `;
 

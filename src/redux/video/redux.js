@@ -7,12 +7,16 @@ const initialState = {
     watch: {
         items: [],
     },
+    activities: {
+        items: [],
+    }
 }
 
 export const Action = createActions({
     updateState: ['props'],
     getVideos: ['data'],
     getVideoById: ['data'],
+    getActivitiesVideos: ['data'],
 }, {
     prefix: 'VIDEO/'
 });

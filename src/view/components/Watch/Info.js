@@ -23,6 +23,8 @@ export function Info({snippet,statistics}) {
         commentCount
     } = statistics;
 
+    console.log('@@favoriteCount',favoriteCount);
+
   return (
       <Container>
           <Head>

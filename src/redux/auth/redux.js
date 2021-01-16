@@ -1,7 +1,8 @@
 import {createActions, createReducer} from "reduxsauce";
 
 const initialState = {
-    user: null
+    user: null,
+    isLoggedIn: false,
 }
 
 export const Action = createActions({

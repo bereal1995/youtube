@@ -11,7 +11,6 @@ function MainListContainer() {
     const app = useSelector(state => state.app);
 
     const getVideos = () => videoActions.getVideos({
-        key: 'AIzaSyCyw5uVybeHQmT69RLSwGIRltYNDsodJxM',
         part: 'id, snippet, contentDetails, player, statistics',
         chart: 'mostPopular',
         regionCode: 'KR',

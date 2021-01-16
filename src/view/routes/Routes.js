@@ -7,6 +7,7 @@ import SignIn from "../pages/Sign/SignIn";
 import SignUp from "../pages/Sign/SignUp";
 import Watch from "../pages/Watch";
 import Feed from "../pages/Feed";
+import Search from "../pages/Searrch";
 
 const Routes = ({sidebar}) => {
 
@@ -15,6 +16,7 @@ const Routes = ({sidebar}) => {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/watch" component={Watch}/>
+                <Route path="/search" component={Search}/>
                 <Route path="/feed" component={Feed}/>
                 <Route path="/signin" component={SignIn}/>
                 <Route path="/signup" component={SignUp}/>

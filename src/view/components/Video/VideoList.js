@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import VideoItem from "./VideoItem";
 
-function VideoList({items}) {
+function VideoList({items = []}) {
 
   return (
       <Container>

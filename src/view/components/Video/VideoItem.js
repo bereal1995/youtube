@@ -11,7 +11,6 @@ function VideoItem({id,snippet, statistics}) {
         thumbnails,
         title,
         channelTitle,
-        
     } = snippet
 
     const {

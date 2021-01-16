@@ -19,7 +19,6 @@ function WatchContainer({location}) {
     useEffect(() => {
         videoActions.getVideoById({
             id: values.v,
-            key: 'AIzaSyCyw5uVybeHQmT69RLSwGIRltYNDsodJxM',
             part: 'id, snippet, contentDetails, player, statistics',
             maxResults: 2,
         });

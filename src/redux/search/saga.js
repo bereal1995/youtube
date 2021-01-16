@@ -6,6 +6,7 @@ const saga = function* () {
     yield all([
         takeLatest(Action.Types.SEARCH_VIDEOS, function* ({data}) {
             const result = yield call(API.searchVideos, data)
+            console.log('@@result',result);
             yield put(Action.Creators.updateState({
                 list: result
             }))

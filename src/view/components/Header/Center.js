@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import Search from "../Search";
+import Search from "../SearchBox";
 
 function Center() {
 

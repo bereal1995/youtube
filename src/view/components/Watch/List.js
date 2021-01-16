@@ -7,9 +7,7 @@ import {useSelector} from "react-redux";
 function List({snippet}) {
 
     useEffect(() => {
-        console.log('@@item',snippet.channelId);
         videoActions.getActivitiesVideos({
-            key: 'AIzaSyCyw5uVybeHQmT69RLSwGIRltYNDsodJxM',
             channelId: snippet.channelId,
             part: 'id, snippet, contentDetails',
         });

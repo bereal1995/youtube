@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-import {URL} from "../constants/Consts";
+import {GOOGLE_API_KEY, URL} from "../constants/Consts";
 
 const FetchConsts = {
     GET: 'get',
@@ -43,6 +43,7 @@ const request = async (contentType, method, url,  data = {}) => {
         }
 
         if (method === FetchConsts.GET) {
+            data.key = GOOGLE_API_KEY;
             config.params = data;
         } else {
             if (contentType === FetchConsts.APPLICATION_X_WWW_FORM_URL_ENCODED)

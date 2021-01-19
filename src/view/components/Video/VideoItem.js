@@ -85,6 +85,12 @@ const Detail = styled.div`
       font-weight: 500;
       line-height: 1.5;
       color: #fff;
+      overflow: hidden;
+      verflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;  
+      -webkit-box-orient: vertical;
     }
     h4 {
       font-size: 14px;

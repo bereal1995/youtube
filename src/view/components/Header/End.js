@@ -31,7 +31,7 @@ function End() {
           {
               isLoggedIn
                   ?
-                  <Avatar>
+                  <Avatar onClick={signOut}>
                       <img src={profileObj.imageUrl} alt=""/>
                   </Avatar>
                   :
@@ -72,10 +72,8 @@ const ButtonSetting = styled.div`
   padding: 8px;
   margin-left: 8px;
   cursor: pointer;
-  svg {
-      width: 24px;
-      height: 24px;
-      fill: #fff;
+  > div {
+    position: static;
   }
 `;
 

@@ -18,9 +18,15 @@ const saga = function* () {
         }),
         takeLatest(Action.Types.GET_ACTIVITIES_VIDEOS, function* ({data}) {
             const result = yield call(API.activitiesVideos, data)
-            console.log('@@data',data);
             yield put(Action.Creators.updateState({
                 activities: result,
+            }))
+        }),
+        takeLatest(Action.Types.GET_POPULAR_VIDEOS, function* ({data}) {
+            const result = yield call(API.getVideos, data)
+            console.log('@@data',data);
+            yield put(Action.Creators.updateState({
+                popular: result,
             }))
         }),
     ])

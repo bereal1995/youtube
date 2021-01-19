@@ -9,7 +9,10 @@ const initialState = {
     },
     activities: {
         items: [],
-    }
+    },
+    popular: {
+        items: [],
+    },
 }
 
 export const Action = createActions({
@@ -17,6 +20,7 @@ export const Action = createActions({
     getVideos: ['data'],
     getVideoById: ['data'],
     getActivitiesVideos: ['data'],
+    getPopularVideos: ['data'],
 }, {
     prefix: 'VIDEO/'
 });

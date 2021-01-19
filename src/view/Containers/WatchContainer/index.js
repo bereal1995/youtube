@@ -48,7 +48,6 @@ const Container = styled.div`
 const ContentsContainer = styled.div`
   display:flex;
   justify-content: center;
-  min-width: 1280px;
   padding: 0 20px;
 `;
 

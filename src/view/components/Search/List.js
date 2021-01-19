@@ -13,7 +13,7 @@ function List({list}) {
   )
 }
 const Container = styled.div`
-
+  padding: 0 24px;
 `;
 
 

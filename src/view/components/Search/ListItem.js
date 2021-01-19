@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 import qs from "qs";
 import {IconSettings} from "../Icons";
+import {navigate} from "../../../lib/History";
 
 function ListItem({snippet, id}) {
 
@@ -10,11 +11,12 @@ function ListItem({snippet, id}) {
         thumbnails,
         title,
         channelTitle,
+        description,
     } = snippet
 
 
   return (
-      <Container className={'video-item'}>
+      <Container className={'search-item'}>
           <Thumb>
               <Link to={`/watch?${qs.stringify({
                   v: id?.videoId,
@@ -22,78 +24,79 @@ function ListItem({snippet, id}) {
                   <img src={thumbnails.high.url} alt=""/>
               </Link>
           </Thumb>
-          <Desc>
-              <Avatar>
-                  <img src={thumbnails.high.url} alt=""/>
-              </Avatar>
+          <Desc onClick={() => navigate(`/watch?${qs.stringify({
+              v: id?.videoId,
+          })}`)}>
               <Detail>
                   <h3>
                       {title}
                   </h3>
-                  <h4>
-                      {channelTitle}
-                  </h4>
-                  <IconSettings/>
+                  <ChannelInfo>
+                      <Avatar>
+                          <img src={thumbnails.high.url} alt=""/>
+                      </Avatar>
+                      <h4>
+                          {channelTitle}
+                      </h4>
+                  </ChannelInfo>
+                  <p>
+                      {description}
+                  </p>
               </Detail>
+              <IconSettings className={'icon'}/>
           </Desc>
       </Container>
   )
 }
 
 const Container = styled.div`
-
+  display:flex;
+  margin-top: 16px;
 `;
 
 const Thumb = styled.div`
-    
+  margin-right: 16px;
+  a {
+    display:block;
+  }
 `;
 
 const Desc = styled.div`
     position: relative;
     display:flex;
-    padding: 10px 25px 10px 0;
-    
+    width: 100%;
+    cursor: pointer;
+    .icon{
+        right: 0;
+        top: 0;
+    }
 `;
 
 const Detail = styled.div`
-    flex:1;
     overflow: hidden;
     padding-left: 10px;
+    color: #aaa;
+    font-size: 13px;
     h3 {
-      margin-bottom: 6px;
+      margin-right: 20px;
       font-size: 16px;
       font-weight: 500;
       line-height: 1.5;
       color: #fff;
     }
-    h4 {
-      font-size: 14px;
-      color: #aaa;
-    }
-    p {
-      display:flex;
-      align-items: center;
-      margin-top: 5px;
-      font-size: 14px;
-      color: #aaa;
-      .dot {
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: #aaa;
-        margin: 0 5px;
-      }
-    }
-    .icon{
-        right: 0;
-        top: 10px;
-    }
+`;
+
+const ChannelInfo = styled.div`
+   display:flex;
+   align-items: center;
+   padding: 12px 0;
 `;
 
 const Avatar = styled.div`
+    margin-right: 8px;
     img {
-        width: 36px;
-        height: 36px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
     }
 `;

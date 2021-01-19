@@ -7,7 +7,6 @@ import {useSelector} from "react-redux";
 function MainListContainer() {
 
     const {list} = useSelector(state => state.video);
-    const app = useSelector(state => state.app);
 
     const getVideos = () => videoActions.getVideos({
         part: 'id, snippet, contentDetails, player, statistics',

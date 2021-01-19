@@ -4,11 +4,8 @@ import cn from "classnames";
 import {navigate} from "../../../lib/History";
 import {withRouter} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {appActions} from "../../../redux/ActionCreators";
 
 function SideMenuBig({location}) {
-
-    const app = useSelector(state => state.app);
 
   return (
       <Container>

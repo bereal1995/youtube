@@ -13,7 +13,7 @@ function ListItem({snippet}) {
   return (
       <Container>
           <Thumb>
-              <img src={thumbnails.medium.url}/>
+              <img src={thumbnails.medium.url} alt={'썸네일 이미지'}/>
           </Thumb>
           <Text>
               <Title>{title}</Title>

@@ -11,7 +11,7 @@ function List({snippet}) {
             channelId: snippet.channelId,
             part: 'id, snippet, contentDetails',
         });
-    },[])
+    },[snippet.channelId])
 
     const activities = useSelector(state => state.video.activities);
 

@@ -22,7 +22,7 @@ function WatchContainer({location}) {
             part: 'id, snippet, contentDetails, player, statistics',
             maxResults: 2,
         });
-    },[])
+    })
 
     if(!item) return null;
   return (

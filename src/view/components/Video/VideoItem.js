@@ -15,10 +15,6 @@ function VideoItem({id,snippet, statistics}) {
 
     const {
         viewCount,
-        likeCount,
-        dislikeCount,
-        favoriteCount,
-        commentCount
     } = statistics;
 
     const setViewCount = (count) => {

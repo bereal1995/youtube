@@ -12,6 +12,8 @@ function End() {
     const {signIn, signOut, loaded} = useAuth();
     const {isLoggedIn, profileObj} = useSelector(state => state.auth);
 
+    console.log('@@loaded',loaded);
+
   return (
       <Container>
           <ButtonYoutubeApp>

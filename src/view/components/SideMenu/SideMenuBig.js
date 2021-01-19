@@ -3,7 +3,6 @@ import styled from "styled-components";
 import cn from "classnames";
 import {navigate} from "../../../lib/History";
 import {withRouter} from "react-router-dom";
-import {useSelector} from "react-redux";
 
 function SideMenuBig({location}) {
 

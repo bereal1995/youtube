@@ -19,8 +19,9 @@ export const Action = createActions({
     updateState: ['props'],
     getVideos: ['data'],
     getVideoById: ['data'],
-    getActivitiesVideos: ['data'],
+    getActivitiesVideos: ['channelId'],
     getPopularVideos: ['data'],
+    postVideoRating: ['data'],
 }, {
     prefix: 'VIDEO/'
 });

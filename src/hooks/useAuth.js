@@ -24,6 +24,9 @@ export const useAuth = () => {
             isLoggedIn: false,
         })
     }
+    const scopes = [
+        'https://www.googleapis.com/auth/youtube'
+    ]
 
     const { signIn, loaded } = useGoogleLogin({
         onSuccess,
@@ -33,6 +36,7 @@ export const useAuth = () => {
         isSignedIn: true,
         onFailure,
         scope: 'email profile',
+        scopes,
     })
 
     const { signOut } = useGoogleLogout({

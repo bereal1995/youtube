@@ -1,19 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
-import {videoActions} from "../../../redux/ActionCreators";
 import ListItem from "./ListItem";
-import {useSelector} from "react-redux";
 
-function List({snippet}) {
-
-    useEffect(() => {
-        videoActions.getActivitiesVideos({
-            channelId: snippet.channelId,
-            part: 'id, snippet, contentDetails',
-        });
-    },[snippet.channelId])
-
-    const activities = useSelector(state => state.video.activities);
+function List({snippet, activities}) {
 
   return (
       <Container>

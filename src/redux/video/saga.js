@@ -15,19 +15,26 @@ const saga = function* () {
             yield put(Action.Creators.updateState({
                 watch: result
             }))
+            yield put(Action.Creators.getActivitiesVideos(result.items[0].snippet.channelId))
         }),
-        takeLatest(Action.Types.GET_ACTIVITIES_VIDEOS, function* ({data}) {
-            const result = yield call(API.activitiesVideos, data)
+        takeLatest(Action.Types.GET_ACTIVITIES_VIDEOS, function* ({channelId}) {
+            const result = yield call(API.activitiesVideos, {
+                channelId,
+                part: 'id, snippet, contentDetails'
+            })
             yield put(Action.Creators.updateState({
                 activities: result,
             }))
         }),
         takeLatest(Action.Types.GET_POPULAR_VIDEOS, function* ({data}) {
             const result = yield call(API.getVideos, data)
-            console.log('@@data',data);
             yield put(Action.Creators.updateState({
                 popular: result,
             }))
+        }),
+        takeLatest(Action.Types.POST_VIDEO_RATING, function* ({data}) {
+            console.log('@@data',data);
+            const result = yield call(API.videoRating, data)
         }),
     ])
 }

@@ -5,7 +5,7 @@ import {setViewCount, thousandNumberFormat} from "../../../lib/Common";
 import {Tags} from "../../../styled/Common.Styled";
 import ChannelDetail from "./ChannelDetail";
 
-export function Info({snippet,statistics}) {
+export function Info({snippet,statistics,videoRating = () => {}}) {
 
     const {
         title,
@@ -48,7 +48,7 @@ export function Info({snippet,statistics}) {
                                   className="style-scope yt-icon"/>
                           </g>
                       </svg>
-                      <span>{setViewCount(likeCount)}</span>
+                      <span onClick={() => videoRating('like')}>{setViewCount(likeCount)}</span>
                   </Like>
                   <DisLike>
                       <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"

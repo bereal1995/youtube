@@ -14,26 +14,36 @@ function WatchContainer({location}) {
     const values = qs.parse(location.search,{ignoreQueryPrefix: true});
 
     const {watch} = useSelector(state => state.video);
+    const activities = useSelector(state => state.video.activities);
     const item = watch.items[0];
+
+    const videoRating = (rate) => {
+        console.log('@@rate',rate);
+        videoActions.postVideoRating({
+            id: values.v,
+            rating: rate,
+        })
+    }
 
     useEffect(() => {
         videoActions.getVideoById({
             id: values.v,
             part: 'id, snippet, contentDetails, player, statistics',
-            maxResults: 2,
+            maxResults: 1,
         });
-    })
+    },[values.v])
 
     if(!item) return null;
+
   return (
       <Container>
           <Player source={item?.player}/>
           <ContentsContainer>
               <Left>
-                  <Info {...item}/>
+                  <Info {...item} videoRating={videoRating}/>
               </Left>
               <Right>
-                  <List {...item}/>
+                  <List {...item} activities={activities}/>
               </Right>
           </ContentsContainer>
       </Container>

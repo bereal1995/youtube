@@ -26,6 +26,13 @@ const saga = function* () {
                 activities: result,
             }))
         }),
+        takeLatest(Action.Types.GET_VIDEO_COMMENTS, function* ({data}) {
+            const result = yield call(API.getVideoComments, data)
+            console.log('@@resultComment',result);
+            yield put(Action.Creators.updateState({
+                comments: result,
+            }))
+        }),
         takeLatest(Action.Types.GET_POPULAR_VIDEOS, function* ({data}) {
             const result = yield call(API.getVideos, data)
             yield put(Action.Creators.updateState({

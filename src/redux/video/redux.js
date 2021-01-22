@@ -13,6 +13,9 @@ const initialState = {
     popular: {
         items: [],
     },
+    comments: {
+        items: [],
+    }
 }
 
 export const Action = createActions({
@@ -20,6 +23,7 @@ export const Action = createActions({
     getVideos: ['data'],
     getVideoById: ['data'],
     getActivitiesVideos: ['channelId'],
+    getVideoComments: ['data'],
     getPopularVideos: ['data'],
     postVideoRating: ['data'],
 }, {

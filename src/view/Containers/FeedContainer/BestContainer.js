@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {videoActions} from "../../../redux/ActionCreators";
-import List from "../../components/Search/List";
+import List from "../../components/Common/List";
 
 function BestContainer() {
 

@@ -34,6 +34,29 @@ export const yearRange = (from, to) => {
     return diffs.map(d => moment(from, 'YYYY').add(d, 'year').format('YYYY'))
 }
 
+export const daysAgo = (value) => {
+    const today = new Date();
+    const timeValue = new Date(value);
+
+    const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+    if (betweenTime < 1) return '방금전';
+    if (betweenTime < 60) {
+        return `${betweenTime}분전`;
+    }
+
+    const betweenTimeHour = Math.floor(betweenTime / 60);
+    if (betweenTimeHour < 24) {
+        return `${betweenTimeHour}시간전`;
+    }
+
+    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+    if (betweenTimeDay < 365) {
+        return `${betweenTimeDay}일전`;
+    }
+
+    return `${Math.floor(betweenTimeDay / 365)}년전`;
+}
+
 export const thousandNumberFormat = (n) => {
     if (typeof n === 'number')
         return n.toString().replace(THOUSAND_COMMA_REGEX, '$1,');
@@ -45,7 +68,10 @@ export const thousandNumberFormat = (n) => {
 export const setViewCount = (count) => {
     if (count / 10000 >= 1) {
         return thousandNumberFormat(Math.floor(count / 10000) + '.' + Math.floor(count / 1000).toString().charAt(1) + '만');
-    } else {
+    } else if (count / 1000 >= 1) {
+        return thousandNumberFormat(Math.floor(count / 1000) + Math.floor(count / 100).toString().charAt(-1) + '천');
+    }
+    else {
         return thousandNumberFormat(count)
     }
 }

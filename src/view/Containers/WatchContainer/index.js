@@ -15,7 +15,7 @@ function WatchContainer({location}) {
 
     const {watch} = useSelector(state => state.video);
     const activities = useSelector(state => state.video.activities);
-    const item = watch.items[0];
+    const item = watch?.items[0];
 
     const videoRating = (rate) => {
         console.log('@@rate',rate);
@@ -30,6 +30,14 @@ function WatchContainer({location}) {
             id: values.v,
             part: 'id, snippet, contentDetails, player, statistics',
             maxResults: 1,
+        });
+        videoActions.getVideoComments({
+            videoId: values.v,
+            part: 'id, replies, snippet',
+            maxResults: 5,
+            order: 'relevance',
+            textFormat: 'html',
+            moderationStatus: 'published',
         });
     },[values.v])
 

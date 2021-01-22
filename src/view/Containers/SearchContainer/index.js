@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useLocation} from 'react-router-dom'
 import qs from 'qs'
 import {searchActions} from "../../../redux/ActionCreators";
-import List from "../../components/Search/List";
+import List from "../../components/Common/List";
 import {useSelector} from "react-redux";
 
 function SearchContainer() {

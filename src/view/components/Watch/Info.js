@@ -4,6 +4,7 @@ import moment from 'moment'
 import {setViewCount, thousandNumberFormat} from "../../../lib/Common";
 import {Tags} from "../../../styled/Common.Styled";
 import ChannelDetail from "./ChannelDetail";
+import Comment from "./Comment";
 
 export function Info({snippet,statistics,videoRating = () => {}}) {
 
@@ -98,6 +99,7 @@ export function Info({snippet,statistics,videoRating = () => {}}) {
                          favoriteCount={favoriteCount}
                          description={description}
           />
+          <Comment/>
       </Container>
   )
 }

@@ -54,7 +54,8 @@ function ChannelDetail(props) {
 }
 const Container = styled.div`
   display:flex;
-  padding-top: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,.1);
 `;
 
 const ChannelDesk = styled.div`

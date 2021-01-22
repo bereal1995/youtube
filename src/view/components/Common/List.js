@@ -7,7 +7,7 @@ function List({list}) {
   return (
       <Container>
           {
-              list.items.map((item, i) => <ListItem key={i} {...item} id={item.id?.videoId}/>)
+              list.items.map((item, i) => <ListItem key={i} {...item} id={item.id.videoId ? item.id.videoId : item.id }/>)
           }
       </Container>
   )

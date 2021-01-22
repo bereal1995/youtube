@@ -14,18 +14,17 @@ function ListItem({snippet, id}) {
         description,
     } = snippet
 
-
   return (
       <Container className={'search-item'}>
           <Thumb>
               <Link to={`/watch?${qs.stringify({
-                  v: id?.videoId,
+                  v: id,
               })}`}>
                   <img src={thumbnails.high.url} alt=""/>
               </Link>
           </Thumb>
           <Desc onClick={() => navigate(`/watch?${qs.stringify({
-              v: id?.videoId,
+              v: id,
           })}`)}>
               <Detail>
                   <h3>

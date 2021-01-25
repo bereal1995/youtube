@@ -9,8 +9,6 @@ function ChannelDetail(props) {
         description
     } = props;
 
-    console.log('@@favoriteCount',favoriteCount);
-
     const [control, setControl] = useState(false);
 
     const descriptionChange = (desc) => {

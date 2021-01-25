@@ -1,17 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import {daysAgo, setViewCount} from "../../../lib/Common";
+import ReplyItem from "./ReplyItem";
 
-function CommentItem({snippet}) {
+function CommentItem({snippet, replies}) {
 
     const {
         authorProfileImageUrl,
         authorDisplayName,
         publishedAt,
         textDisplay,
-        totalReplyCount,
         likeCount,
     } = snippet.topLevelComment.snippet
+
+    const [reply, setReply] = useState(false);
 
   return (
       <Container>
@@ -53,17 +55,24 @@ function CommentItem({snippet}) {
                   <Reply>답글</Reply>
               </Button>
               {
-                  totalReplyCount &&
-                  <More>
+                  replies?.comments &&
+                  <More onClick={ () => setReply(!reply)}
+                        reply={reply}
+                  >
                       <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
                            className="style-scope yt-icon youtube-icon">
                           <g className="style-scope yt-icon">
                               <path d="M7 10l5 5 5-5z" className="style-scope yt-icon"/>
                           </g>
                       </svg>
-                      답글 {totalReplyCount}개 보기
+                      답글 {replies?.comments.length}개 보기
                   </More>
               }
+              <ReplyArea>
+                  {
+                      reply && replies?.comments.map((replyItem, i) => <ReplyItem key={i} {...replyItem}/>).reverse()
+                  }
+              </ReplyArea>
           </Text>
       </Container>
   )
@@ -152,11 +161,15 @@ const More = styled.div`
   margin-left: -6px;
   color: #3ea6ff;
   cursor: pointer;
+  ${props => props.reply && 'svg{transform: rotate(180deg);}'}
   svg {
     width: 20px;
     height: 20px;
     fill: #3ea6ff;
-  }  
+  }
 `;
 
+const ReplyArea = styled.div`
+    
+`;
 export default CommentItem;

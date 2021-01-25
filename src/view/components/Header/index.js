@@ -16,11 +16,12 @@ const Header = () => {
 }
 
 const Container = styled.header`
-    position: relative;
+    position: fixed;
     display:flex;
     align-items: center;
     justify-content: space-between;
     z-index: 100;
+    width: 100%;
     height: 56px;
     background: #212121;
     padding: 0 18px;  

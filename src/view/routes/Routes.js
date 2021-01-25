@@ -28,7 +28,8 @@ const Routes = ({sidebar}) => {
 
 
 const Container = styled.div`
-    ${props => props.sidebar ? 'margin-left: 240px;' : 'margin-left: 72px;'}
+    ${props => props.sidebar ? 'margin-left: 240px;' : 'margin-left: 72px;'};
+    padding-top: 56px;
 `;
 
 export default Routes;

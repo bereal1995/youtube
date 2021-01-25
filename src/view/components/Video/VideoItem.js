@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {IconSettings} from "../Icons";
-import {thousandNumberFormat} from "../../../lib/Common";
+import {daysAgo, setViewCount} from "../../../lib/Common";
 import {Link} from "react-router-dom";
 import qs from 'qs'
 
@@ -11,20 +11,13 @@ function VideoItem({id,snippet, statistics}) {
         thumbnails,
         title,
         channelTitle,
+        publishedAt,
     } = snippet
 
     const {
         viewCount,
     } = statistics;
 
-    const setViewCount = (count) => {
-        if (count / 10000 >= 1) {
-            return thousandNumberFormat(Math.floor(count / 10000)) + '만';
-        } else {
-            return thousandNumberFormat(count)
-        }
-    }
-    
   return (
       <Container className={'video-item'}>
           <Thumb>
@@ -48,7 +41,7 @@ function VideoItem({id,snippet, statistics}) {
                   <p>
                       <span>조회수 {setViewCount(viewCount)}</span>
                       <span className="dot"/>
-                      <span>1주 전</span>
+                      <span>{daysAgo(publishedAt)}</span>
                   </p>
                   <IconSettings/>
               </Detail>
@@ -61,7 +54,7 @@ const Container = styled.div`
 `;
 
 const Thumb = styled.div`
-    
+
 `;
 
 const Desc = styled.div`

@@ -5,16 +5,15 @@ import qs from 'qs'
 import {searchActions} from "../../../redux/ActionCreators";
 import List from "../../components/Common/List";
 import {useSelector} from "react-redux";
+import ListSkeleton from "../../components/Skeleton/ListSkeleton";
 
 function SearchContainer() {
 
     const location = useLocation();
+    const {loaded} = useSelector(state => state.app);
 
     const {search_query} = qs.parse(location.search,{ ignoreQueryPrefix: true});
     const {list} = useSelector(state => state.search);
-
-    console.log('@@search_query',search_query);
-    console.log('@@location',location);
 
     useEffect(() => {
         searchActions.searchVideos({
@@ -23,6 +22,8 @@ function SearchContainer() {
             type: 'video',
         })
     },[search_query])
+
+    if (!loaded) return <ListSkeleton/>
 
   return (
       <Container>

@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 function Comment() {
 
     const commentCount = useSelector(state => state.video.watch.items[0].statistics.commentCount);
-    const {comments} = useSelector(state => state.video);
+    const {commentList} = useSelector(state => state.video);
 
   return (
       <Container>
@@ -26,7 +26,7 @@ function Comment() {
               </ButtonSort>
           </Title>
           {
-              comments.items.map((item, i) => <CommentItem key={i} {...item}/>)
+              commentList.items.map((item, i) => <CommentItem key={i} {...item}/>)
           }
       </Container>
   )

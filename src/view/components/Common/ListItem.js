@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import qs from "qs";
 import {IconSettings} from "../Icons";
 import {navigate} from "../../../lib/History";
+import {daysAgo} from "../../../lib/Common";
 
 function ListItem({snippet, id}) {
 
@@ -12,10 +13,11 @@ function ListItem({snippet, id}) {
         title,
         channelTitle,
         description,
+        publishedAt
     } = snippet
 
   return (
-      <Container className={'search-item'}>
+      <Container className={'list-item'}>
           <Thumb>
               <Link to={`/watch?${qs.stringify({
                   v: id,
@@ -30,6 +32,11 @@ function ListItem({snippet, id}) {
                   <h3>
                       {title}
                   </h3>
+                  <View>
+                      <span>조회수</span>
+                      <span className="dot"/>
+                      <span>{daysAgo(publishedAt)}</span>
+                  </View>
                   <ChannelInfo>
                       <Avatar>
                           <img src={thumbnails.high.url} alt=""/>
@@ -50,6 +57,8 @@ function ListItem({snippet, id}) {
 
 const Container = styled.div`
   display:flex;
+  justify-content: center;
+  width: 100%;
   margin-top: 16px;
 `;
 
@@ -98,6 +107,18 @@ const Detail = styled.div`
       -webkit-line-clamp: 2;  
       -webkit-box-orient: vertical;
     }
+`;
+
+const View = styled.div`
+  font-size: 13px;
+  color: #aaa;  
+  .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #aaa;
+    margin: 0 5px;
+  }
 `;
 
 const ChannelInfo = styled.div`

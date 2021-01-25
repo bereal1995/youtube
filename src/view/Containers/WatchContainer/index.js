@@ -5,20 +5,19 @@ import {videoActions} from "../../../redux/ActionCreators";
 import {useSelector} from "react-redux";
 import Player from "../../components/Player";
 import Info from "../../components/Watch/Info";
-import List from "../../components/Watch/List";
+import RelatedList from "../../components/Watch/RelatedList";
+import ListSkeleton from "../../components/Skeleton/ListSkeleton";
 
 function WatchContainer({location}) {
     
-    console.log('@@location',location);
-
     const values = qs.parse(location.search,{ignoreQueryPrefix: true});
+    const {loaded} = useSelector(state => state.auth);
 
     const {watch} = useSelector(state => state.video);
     const activities = useSelector(state => state.video.activities);
     const item = watch?.items[0];
 
     const videoRating = (rate) => {
-        console.log('@@rate',rate);
         videoActions.postVideoRating({
             id: values.v,
             rating: rate,
@@ -42,6 +41,7 @@ function WatchContainer({location}) {
     },[values.v])
 
     if(!item) return null;
+    if(!loaded) return <ListSkeleton/>
 
   return (
       <Container>
@@ -51,7 +51,7 @@ function WatchContainer({location}) {
                   <Info {...item} videoRating={videoRating}/>
               </Left>
               <Right>
-                  <List {...item} activities={activities}/>
+                  <RelatedList {...item} activities={activities}/>
               </Right>
           </ContentsContainer>
       </Container>

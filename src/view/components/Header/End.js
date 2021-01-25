@@ -1,18 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import {IconSettings} from "../Icons";
 import {useAuth} from "../../../hooks/useAuth";
 import {useSelector} from "react-redux";
 import LoadedContainer from "../../Containers/LoadedContainer";
+import MyMenu from "./MyMenu";
 
 
 
 function End() {
 
-    const {signIn, signOut, loaded} = useAuth();
+    const {signIn, loaded} = useAuth();
     const {isLoggedIn, profileObj} = useSelector(state => state.auth);
 
     console.log('@@loaded',loaded);
+
+    const [myMenu, setMyMenu] = useState(false);
 
   return (
       <Container>
@@ -33,8 +36,11 @@ function End() {
           {
               isLoggedIn
                   ?
-                  <Avatar onClick={signOut}>
+                  <Avatar onClick={() => setMyMenu(!myMenu)}>
                       <img src={profileObj.imageUrl} alt=""/>
+                      {
+                          myMenu && <MyMenu/>
+                      }
                   </Avatar>
                   :
                   <LoadedContainer>
@@ -63,6 +69,11 @@ const Container = styled.div`
 const ButtonYoutubeApp = styled.div`
   padding: 8px;
   cursor: pointer;
+  opacity: .6;
+  transition: .4s;
+  &:hover{
+    opacity: 1;
+  }
   svg {
       width: 24px;
       height: 24px;
@@ -100,6 +111,7 @@ const ButtonSignIn = styled.div`
 `;
 
 const Avatar = styled.div`
+    position: relative;
     cursor: pointer;
     margin-left: 15px;
     img {

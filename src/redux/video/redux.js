@@ -13,8 +13,19 @@ const initialState = {
     popular: {
         items: [],
     },
-    comments: {
-        items: [],
+    commentList: {
+        items: [
+            {
+                snippet: {
+                    topLevelComment: {
+                        snippet: {},
+                    },
+                },
+                replies: {
+                    comments: {},
+                },
+            },
+        ],
     }
 }
 

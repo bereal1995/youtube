@@ -1,27 +1,30 @@
 import React from 'react';
 import styled from "styled-components";
 import {IconSettings} from "../Icons";
+import {daysAgo, setViewCount} from "../../../lib/Common";
+import {navigate} from "../../../lib/History";
 
-function ListItem({snippet}) {
+function RelatedListItem({snippet, contentDetails}) {
 
     const {
         title,
         thumbnails,
-        channelTitle
+        channelTitle,
+        publishedAt,
     } = snippet
 
   return (
       <Container>
-          <Thumb>
-              <img src={thumbnails.medium.url} alt={'썸네일 이미지'}/>
+          <Thumb onClick={() => navigate(`/watch?v=${contentDetails.upload.videoId}`)}>
+              <img src={thumbnails.high.url} alt={'썸네일 이미지'}/>
           </Thumb>
           <Text>
               <Title>{title}</Title>
               <div className="channel-name">{channelTitle}</div>
               <div className="channel-desc">
-                  <span>조회수 100만회</span>
+                  <span>{setViewCount(10)}</span>
                   <span className="dot"/>
-                  <span>1개월 전</span>
+                  <span>{daysAgo(publishedAt)}</span>
               </div>
               <IconSettings/>
           </Text>
@@ -36,6 +39,7 @@ const Container = styled.div`
 const Thumb = styled.div`
   width: 168px;
   margin-right: 8px;
+  cursor: pointer;
   img {
     display:block;
   }
@@ -78,4 +82,4 @@ const Title = styled.div`
 `;
 
 
-export default ListItem;
+export default RelatedListItem;

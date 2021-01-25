@@ -134,17 +134,4 @@ const Reply = styled.div`
   cursor: pointer;
 `;
 
-const More = styled.div`
-  display:flex;
-  align-items: center;
-  margin-left: -6px;
-  color: #3ea6ff;
-  cursor: pointer;
-  svg {
-    width: 20px;
-    height: 20px;
-    fill: #3ea6ff;
-  }  
-`;
-
 export default ReplyItem;

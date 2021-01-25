@@ -49,9 +49,9 @@ const saga = function* () {
             }))
             yield put(AppAction.Creators.updateState({loaded: true}));
         }),
-        takeLatest(Action.Types.POST_VIDEO_RATING, function* ({data}) {
-            const result = yield call(API.videoRating, data)
-        }),
+        // takeLatest(Action.Types.POST_VIDEO_RATING, function* ({data}) {
+        //     const result = yield call(API.videoRating, data)
+        // }),
     ])
 }
 

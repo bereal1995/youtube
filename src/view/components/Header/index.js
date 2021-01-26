@@ -20,7 +20,7 @@ const Container = styled.header`
     display:flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 100;
+    z-index: 101;
     width: 100%;
     height: 56px;
     background: #212121;

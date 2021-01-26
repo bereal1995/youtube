@@ -45,9 +45,9 @@ function WatchContainer({location}) {
 
   return (
       <Container>
-          <Player source={item?.player}/>
           <ContentsContainer>
               <Left>
+                  <Player source={item?.player}/>
                   <Info {...item} videoRating={videoRating}/>
               </Left>
               <Right>
@@ -66,15 +66,16 @@ const Container = styled.div`
 const ContentsContainer = styled.div`
   display:flex;
   justify-content: center;
-  padding: 0 20px;
+  padding: 24px 20px;
 `;
 
 const Left = styled.div`
-  flex: 1;
+  display:flex;
+  flex-direction: column;
 `;
 
 const Right = styled.div`
-    
+  padding: 0 24px;  
 `;
 
 export default WatchContainer;

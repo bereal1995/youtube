@@ -8,7 +8,7 @@ function ListSkeleton() {
 
     return (
         <Container>
-                {length.map((item,i) => <ListItem/>)}
+                {length.map((item,i) => <ListItem key={i}/>)}
         </Container>
     )
 }

@@ -24,7 +24,7 @@ const App = () => {
 }
 
 const Container = styled.div`
-    
+  min-width: 1280px;  
 `;
 
 export default App;

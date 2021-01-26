@@ -63,10 +63,13 @@ const Container = styled.div`
 `;
 
 const Thumb = styled.div`
-  width: 400px;
+  width: 246px;
+  height: 138px;
   margin-right: 16px;
   a {
     display:block;
+    width: 100%;
+    height: 100%;
     img {
       width: 100%;
       height: 100%;

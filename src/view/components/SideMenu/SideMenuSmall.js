@@ -85,6 +85,7 @@ const Container = styled.div`
   height: 100%;
   padding: 56px 0;
   background: #212121;
+  z-index: 100;
 `;
 
 const Nav = styled.div`

@@ -24,7 +24,7 @@ function VideoItem({id,snippet, statistics}) {
               <Link to={`/watch?${qs.stringify({
                   v: id,
               })}`}>
-                  <img src={thumbnails.high.url} alt=""/>
+                  <img src={thumbnails.maxres.url} alt=""/>
               </Link>
           </Thumb>
           <Desc>
@@ -54,7 +54,10 @@ const Container = styled.div`
 `;
 
 const Thumb = styled.div`
-
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 `;
 
 const Desc = styled.div`

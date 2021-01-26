@@ -42,8 +42,8 @@ const Container = styled.div`
 const Thumb = styled.div`
   margin-right: 16px;
   .react-loading-skeleton {
-    width: 400px;
-    height: 300px;
+    width: 246px;
+    height: 138px;
   }
 `;
 

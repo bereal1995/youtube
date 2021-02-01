@@ -13,10 +13,12 @@ function RelatedListItem({snippet, contentDetails}) {
         publishedAt,
     } = snippet
 
+    const thumbUrl = (v) => v.replace('maxresdefault.jpg','mqdefault.jpg')
+
   return (
       <Container>
           <Thumb onClick={() => navigate(`/watch?v=${contentDetails.upload.videoId}`)}>
-              <img src={thumbnails.high.url} alt={'썸네일 이미지'}/>
+              <img src={thumbUrl(thumbnails.maxres.url)} alt={'썸네일 이미지'}/>
           </Thumb>
           <Text>
               <Title>{title}</Title>

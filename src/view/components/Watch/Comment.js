@@ -42,6 +42,7 @@ const Title = styled.div`
   p {
     margin-right: 32px;
     font-size: 16px;
+    word-break: break-word;
   }
 `;
 

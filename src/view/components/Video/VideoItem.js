@@ -24,7 +24,7 @@ function VideoItem({id,snippet, statistics}) {
               <Link to={`/watch?${qs.stringify({
                   v: id,
               })}`}>
-                  <img src={thumbnails.maxres.url} alt=""/>
+                  <img src={thumbnails.maxres ? `https://i.ytimg.com/vi/${id}/maxresdefault.jpg` : `https://i.ytimg.com/vi/${id}/mqdefault.jpg`} alt=""/>
               </Link>
           </Thumb>
           <Desc>

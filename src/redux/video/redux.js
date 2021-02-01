@@ -31,11 +31,17 @@ const initialState = {
 
 export const Action = createActions({
     updateState: ['props'],
+
     getVideos: ['data'],
+    getVideosMore: ['data'],
     getVideoById: ['data'],
+
     getActivitiesVideos: ['channelId'],
+
     getVideoComments: ['data'],
+
     getPopularVideos: ['data'],
+
     postVideoRating: ['data'],
 }, {
     prefix: 'VIDEO/'

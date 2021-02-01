@@ -4,14 +4,14 @@ import VideoList from "../../components/Video/VideoList";
 import {videoActions} from "../../../redux/ActionCreators";
 import {useSelector} from "react-redux";
 import {useLocation} from "react-router-dom";
-import MainSkeleton from "../../components/Skeleton/MainSkeleton";
+// import MainSkeleton from "../../components/Skeleton/MainSkeleton";
 import {SentinelCommon} from "../../../styled/Common.Styled";
 import {createObserver} from "../../../lib/Common";
 
 function MainListContainer() {
 
     const {list} = useSelector(state => state.video);
-    const {loaded} = useSelector(state => state.app);
+    // const {loaded} = useSelector(state => state.app);
     const sentinelRef = useRef();
     const location = useLocation()
 

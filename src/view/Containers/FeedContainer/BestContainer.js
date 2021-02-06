@@ -16,7 +16,7 @@ function BestContainer() {
         videoActions.getPopularVideos({
             part: 'id,snippet',
             chart: 'mostPopular',
-            maxResults: 5,
+            maxResults: 20,
             regionCode: 'KR',
         })
     },[location])

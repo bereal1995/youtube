@@ -43,7 +43,8 @@ const saga = function* () {
             yield put(AppAction.Creators.updateState({loaded: false}));
             const result = yield call(API.activitiesVideos, {
                 channelId,
-                part: 'id, snippet, contentDetails'
+                part: 'id, snippet, contentDetails',
+                maxResults: 20,
             })
             yield put(Action.Creators.updateState({
                 activities: result,

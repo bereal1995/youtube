@@ -16,7 +16,6 @@ function WatchContainer({location}) {
     const {watch} = useSelector(state => state.video);
     const activities = useSelector(state => state.video.activities);
     const item = watch?.items[0];
-    const sentinelRef = useRef();
 
     const videoRating = (rate) => {
         videoActions.postVideoRating({

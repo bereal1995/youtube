@@ -40,7 +40,6 @@ const saga = function* () {
         }),
 
         takeLatest(Action.Types.GET_ACTIVITIES_VIDEOS, function* ({channelId}) {
-            yield put(AppAction.Creators.updateState({loaded: false}));
             const result = yield call(API.activitiesVideos, {
                 channelId,
                 part: 'id, snippet, contentDetails',
@@ -49,16 +48,45 @@ const saga = function* () {
             yield put(Action.Creators.updateState({
                 activities: result,
             }))
-            yield put(AppAction.Creators.updateState({loaded: true}));
+        }),
+        takeLatest(Action.Types.GET_ACTIVITIES_VIDEOS_MORE, function* ({data}) {
+            const {video} = yield select();
+            const result = yield call(API.activitiesVideos, {
+                ...data,
+                pageToken: video.activities.nextPageToken,
+            })
+            yield put(Action.Creators.updateState({
+                activities: {
+                    ...result,
+                    items: [
+                        ...video.activities.items,
+                        ...result.items,
+                    ]
+                }
+            }))
         }),
 
         takeLatest(Action.Types.GET_VIDEO_COMMENTS, function* ({data}) {
-            yield put(AppAction.Creators.updateState({loaded: false}));
             const result = yield call(API.getVideoComments, data)
             yield put(Action.Creators.updateState({
                 commentList: result,
             }))
-            yield put(AppAction.Creators.updateState({loaded: true}));
+        }),
+        takeLatest(Action.Types.GET_VIDEO_COMMENTS_MORE, function* ({data}) {
+            const {video} = yield select();
+            const result = yield call(API.getVideoComments, {
+                ...data,
+                pageToken: video.commentList.nextPageToken,
+            })
+            yield put(Action.Creators.updateState({
+                commentList: {
+                    ...result,
+                    items: [
+                        ...video.commentList.items,
+                        ...result.items
+                    ],
+                }
+            }))
         }),
 
         takeLatest(Action.Types.GET_POPULAR_VIDEOS, function* ({data}) {

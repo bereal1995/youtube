@@ -37,10 +37,8 @@ export const Action = createActions({
     getVideoById: ['data'],
 
     getActivitiesVideos: ['channelId'],
-    getActivitiesVideosMore: ['data'],
-
     getVideoComments: ['data'],
-    getVideoCommentsMore: ['data'],
+    getWatchMore: [''],
 
     getPopularVideos: ['data'],
 

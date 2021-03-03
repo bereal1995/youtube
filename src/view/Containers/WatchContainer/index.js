@@ -18,8 +18,7 @@ function WatchContainer({location}) {
     const {watch} = useSelector(state => state.video);
     const activities = useSelector(state => state.video.activities);
     const item = watch?.items[0];
-    const sentinelRefLeft = useRef();
-    const sentinelRefRight = useRef();
+    const sentinelRef = useRef();
 
     const videoRating = (rate) => {
         videoActions.postVideoRating({
@@ -45,29 +44,12 @@ function WatchContainer({location}) {
     },[values.v])
 
     useEffect(() => {
-        if (sentinelRefLeft.current) {
-            createObserver(sentinelRefLeft.current, () => {
-                videoActions.getVideoCommentsMore({
-                    videoId: values.v,
-                    part: 'id, replies, snippet',
-                    maxResults: 20,
-                    order: 'relevance',
-                    textFormat: 'html',
-                    moderationStatus: 'published',
-                });
+        if (sentinelRef.current) {
+            createObserver(sentinelRef.current, () => {
+                videoActions.getWatchMore();
             })
         }
-        if (sentinelRefRight.current) {
-            createObserver(sentinelRefRight.current, () => {
-                videoActions.getActivitiesVideosMore({
-                    channelId: watch?.items[0].snippet.channelId,
-                    part: 'id, snippet, contentDetails',
-                    maxResults: 20,
-                });
-            })
-
-        }
-    },[])
+    },[loaded])
 
     if(!item) return null;
     if(!loaded) return <ListSkeleton/>
@@ -78,12 +60,11 @@ function WatchContainer({location}) {
               <Left>
                   <Player source={item?.player}/>
                   <Info {...item} videoRating={videoRating}/>
-                  <Sentinel ref={sentinelRefLeft}/>
               </Left>
               <Right>
                   <RelatedList {...item} activities={activities}/>
-                  <Sentinel ref={sentinelRefRight}/>
               </Right>
+              <Sentinel ref={sentinelRef}/>
           </ContentsContainer>
       </Container>
   )
@@ -95,26 +76,25 @@ const Container = styled.div`
 `;
 
 const ContentsContainer = styled.div`
+  position: relative;
   display:flex;
   justify-content: center;
   padding: 24px 20px;
 `;
 
 const Left = styled.div`
-  position: relative;
   display:flex;
   flex-direction: column;
-  height: 100%;
+  max-width: 70%;
+  width: 100%;
 `;
 
 const Right = styled.div`
-  position: relative;
-  height: 100%;
   padding: 0 24px;  
 `;
 
 const Sentinel = styled(SentinelCommon)`
-  
+  bottom: 50px;
 `;
 
 export default WatchContainer;

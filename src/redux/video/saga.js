@@ -43,25 +43,45 @@ const saga = function* () {
             const result = yield call(API.activitiesVideos, {
                 channelId,
                 part: 'id, snippet, contentDetails',
-                maxResults: 20,
+                maxResults: 30,
             })
             yield put(Action.Creators.updateState({
                 activities: result,
             }))
         }),
-        takeLatest(Action.Types.GET_ACTIVITIES_VIDEOS_MORE, function* ({data}) {
+        takeLatest(Action.Types.GET_WATCH_MORE, function* () {
             const {video} = yield select();
-            const result = yield call(API.activitiesVideos, {
-                ...data,
-                pageToken: video.activities.nextPageToken,
-            })
+            const [activitiesResult, commentsResult] = yield all([
+                call(API.activitiesVideos, {
+                    part: 'id, snippet, contentDetails',
+                    maxResults: 20,
+                    channelId: video.watch.items[0].snippet.channelId,
+                    pageToken: video.activities.nextPageToken,
+                }),
+                call(API.getVideoComments, {
+                    videoId: video.watch.items[0].id,
+                    part: 'id, replies, snippet',
+                    maxResults: 20,
+                    order: 'relevance',
+                    textFormat: 'html',
+                    moderationStatus: 'published',
+                    pageToken: video.commentList.nextPageToken,
+                })
+            ])
             yield put(Action.Creators.updateState({
                 activities: {
-                    ...result,
+                    ...activitiesResult,
                     items: [
                         ...video.activities.items,
-                        ...result.items,
+                        ...activitiesResult.items,
                     ]
+                },
+                commentList: {
+                    ...commentsResult,
+                    items: [
+                        ...video.commentList.items,
+                        ...commentsResult.items
+                    ],
                 }
             }))
         }),
@@ -70,22 +90,6 @@ const saga = function* () {
             const result = yield call(API.getVideoComments, data)
             yield put(Action.Creators.updateState({
                 commentList: result,
-            }))
-        }),
-        takeLatest(Action.Types.GET_VIDEO_COMMENTS_MORE, function* ({data}) {
-            const {video} = yield select();
-            const result = yield call(API.getVideoComments, {
-                ...data,
-                pageToken: video.commentList.nextPageToken,
-            })
-            yield put(Action.Creators.updateState({
-                commentList: {
-                    ...result,
-                    items: [
-                        ...video.commentList.items,
-                        ...result.items
-                    ],
-                }
             }))
         }),
 

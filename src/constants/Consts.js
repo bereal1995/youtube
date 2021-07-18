@@ -1,0 +1,7 @@
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const STATIC_BASE_URL = process.env.REACT_APP_STATIC_BASE_URL;
+const PUBLIC_BASE_URL = process.env.REACT_APP_PUBLIC_BASE_URL;
+export const URL = {API_BASE_URL, STATIC_BASE_URL, PUBLIC_BASE_URL};
+
+export const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLITENT_ID;
+export const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
